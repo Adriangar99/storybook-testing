@@ -22,7 +22,7 @@ export const Primary: Story = {
 
   export const Warning: Story = {
     args: {
-      primary: true,
+      primary: false,
       label: 'Delete now',
       backgroundColor: 'red',
     }

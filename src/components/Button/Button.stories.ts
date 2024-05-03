@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 import { ButtonType } from "./ButtonType";
-import { fn, userEvent, within } from "@storybook/test";
+import { fn } from "@storybook/test";
 
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
@@ -22,37 +22,9 @@ export const Primary: Story = {
   },
 };
 
-export const PrimaryHover: Story = {
-  args: {
-    type: ButtonType.Primary,
-    label: "Primary hover",
-  },
-  play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement);
-    const user = userEvent.setup();
-
-    const button = canvas.getByText(args.label);
-    await user.hover(button);
-  },
-};
-
 export const Secondary: Story = {
   args: {
     type: ButtonType.Secondary,
     label: "Secondary",
-  },
-};
-
-export const SecondaryHover: Story = {
-  args: {
-    type: ButtonType.Secondary,
-    label: "Secondary hover",
-  },
-  play: async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement);
-    const user = userEvent.setup();
-
-    const button = canvas.getByText(args.label);
-    await user.hover(button);
   },
 };

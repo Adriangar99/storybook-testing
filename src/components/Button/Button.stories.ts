@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ButtonType } from "./Button";
+import { Button } from "./Button";
+import { ButtonType } from "./ButtonType";
 import { fn, userEvent, within } from "@storybook/test";
 
 const meta: Meta<typeof Button> = {
@@ -46,5 +47,12 @@ export const SecondaryHover: Story = {
   args: {
     type: ButtonType.Secondary,
     label: "Secondary hover",
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const user = userEvent.setup();
+
+    const button = canvas.getByText(args.label);
+    await user.hover(button);
   },
 };
